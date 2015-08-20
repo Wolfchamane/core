@@ -1,0 +1,24 @@
+module.exports = function(grunt){
+    /*grunt.registerTask(
+        'php:samples',
+        [
+            'replace:php',
+            'copy:tests'
+        ]
+    );*/
+    grunt.registerTask(
+        'core:code',
+        [
+            'concat:core',
+            'replace:core',
+            'watch:core'
+        ]
+    );
+    grunt.registerTask(
+        'default',
+        [
+            //'php:samples',
+            'core:code'
+        ]
+    );
+};

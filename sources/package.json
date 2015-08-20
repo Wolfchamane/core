@@ -1,0 +1,35 @@
+{
+  "appVersion"    : "1.0",
+  "name"          : "wolfchamane-core",
+  "author"        : "Arturo Martínez",
+  "description"   : "Wolfchamane.com Core Library",
+  "readme"        : "README.md",
+  "homepage"      : "http://mymovies.wolfchamane.com",
+  "private"       : true,
+  "dependencies"  : {
+    "grunt"                 : "~0.4.0",
+    "grunt-text-replace"    : ">=0.4.0",
+    "grunt-contrib-jshint"  : ">=0.4.0",
+    "grunt-contrib-copy"    : ">=0.4.0",
+    "grunt-contrib-watch"   : "~0.4.0",
+    "grunt-contrib-concat"  : ">=0.4.0"
+  },
+  "directories"   : {
+    "core" : "core/",
+    "dest": "../run/core.js",
+    "dist": "../dist/core.js",
+    "vendors": {
+      "jquery": "vendors/jquery-2.1.4/jquery.min.js"
+    }
+  },
+  "environments"  : {
+    "local": {
+      "protocol": "http",
+      "host": "localhost/wolf/"
+    },
+    "live": {
+      "protocol": "http",
+      "host": "wolfchamane.com"
+    }
+  }
+}
