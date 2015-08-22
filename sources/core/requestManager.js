@@ -43,9 +43,10 @@ Core.RequestManager = Core.extend(
         },
         /**
          * Performs AJAX call
-         * @method fetch
+         * @method _fetch
+         * @private
          */
-        fetch: function()
+        _fetch: function()
         {
             return $.ajax(this._getConfig());
         },
