@@ -16,7 +16,7 @@
 	*/
 	function _getSQLQuery($postParams=null)
 	{
-		return "SELECT `_id`, `key`, `title`, `genre`, `year`, `rating` FROM `movies`;";
+		return "SELECT `_id`, `key`, `title`, `genre`, `year`, `rating` FROM `movies` ORDER BY `title`;";
 	}
 
 	function _parseResultSets(&$response, &$trace, &$error, $results, $params)
