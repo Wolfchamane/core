@@ -8,6 +8,7 @@ module.exports = function(grunt){
                     '<%= directories.core.scripts %>' + '_lib.js',
                     '<%= directories.core.scripts %>' + 'core.js',
                     '<%= directories.core.scripts %>' + 'language.js',
+                    '<%= directories.core.scripts %>' + 'storage.js',
                     '<%= directories.core.scripts %>' + 'requestManager.js',
                     '<%= directories.core.scripts %>' + 'models/*.js'
                 ],
