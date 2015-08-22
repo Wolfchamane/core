@@ -4,13 +4,13 @@ module.exports = function(grunt){
         {
             core: {
                 src: [
-                    '<%= directories.vendors.jquery %>',
-                    '<%= directories.core %>' + '_lib.js',
-                    '<%= directories.core %>' + 'core.js',
-                    '<%= directories.core %>' + 'requestManager.js',
-                    '<%= directories.core %>' + 'models/*.js'
+                    '<%= directories.core.vendors.jquery %>',
+                    '<%= directories.core.scripts %>' + '_lib.js',
+                    '<%= directories.core.scripts %>' + 'core.js',
+                    '<%= directories.core.scripts %>' + 'requestManager.js',
+                    '<%= directories.core.scripts %>' + 'models/*.js'
                 ],
-                dest: '<%= directories.dest %>'
+                dest: '<%= directories.core.dest %>'
             }
         }
     );

@@ -6,7 +6,8 @@ module.exports = function(grunt){
 	//Set environment
 	var env = grunt.option('env') || 'local';
 	if (env === 'live'){
-		config.directories.dest = config.directories.dist;
+		config.directories.core.dest = config.directories.core.dist;
+		config.directories.backend.dest = config.directories.backend.dist;
 	}
 	config.env = env;
 
@@ -25,25 +26,4 @@ module.exports = function(grunt){
 
 	grunt.loadTasks('grunt/jobs/');
 	grunt.loadTasks('grunt/tasks/');
-
-	/*grunt.initConfig({
-		,
-		copy: {
-			tests: {
-				expand: true,
-				src: folders.src.tests+'**!/!*.html',
-				dest: folders.dest.tests
-			}
-		},
-
-
-	});
-
-
-
-grunt.loadNpmTasks('grunt-contrib-copy');*/
-
-
-
-
 };
