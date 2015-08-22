@@ -16,16 +16,15 @@ Core.ModelMovies = Core.RequestManager.extend(
         },
         getMovies: function()
         {
-            var self = this;
-            this._fetch().then(
-                function()
-                {
-                    if (self.movies && self.movies.length)
-                    {
-                        self._parseMoviesGenre();
-                    }
-                }
-            );
+            return this._fetch();
+        },
+        _onRequestSuccess: function()
+        {
+            Core.RequestManager._onRequestSuccess.apply(this, arguments);
+            if (this.movies && this.movies.length)
+            {
+                this._parseMoviesGenre();
+            }
         }
     }
 );
