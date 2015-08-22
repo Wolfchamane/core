@@ -30,7 +30,6 @@ Core.ModelMovieGenre = Core.extend(
         },
         parse: function(code)
         {
-            debugger;
             var lang = Core.Language.getLanguage();
             return this.codeMap[lang][code];
         }
