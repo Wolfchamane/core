@@ -26,4 +26,5 @@ module.exports = function(grunt){
 
 	grunt.loadTasks('grunt/jobs/');
 	grunt.loadTasks('grunt/tasks/');
+	grunt.loadTasks('grunt/');
 };

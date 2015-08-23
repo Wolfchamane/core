@@ -16,11 +16,14 @@ module.exports = function(grunt)
         ]
     );
 
+    var backendTasks = ['php:code'];
+    if (grunt.config.get('env') === 'local')
+    {
+        backendTasks.push('watch:php');
+    }
+
     grunt.registerTask(
         'backend',
-        [
-            'php:code',
-            'watch:php'
-        ]
+        backendTasks
     );
 };

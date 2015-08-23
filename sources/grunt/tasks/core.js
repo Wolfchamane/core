@@ -1,11 +1,14 @@
 module.exports = function(grunt){
+
+    var coreCodeTasks = ['concat:core', 'replace:core'];
+    if (grunt.config.get('env') === 'local')
+    {
+        coreCodeTasks.push('watch:core');
+    }
+
     grunt.registerTask(
         'core:code',
-        [
-            'concat:core',
-            'replace:core',
-            'watch:core'
-        ]
+        coreCodeTasks
     );
     grunt.registerTask(
         'core',
