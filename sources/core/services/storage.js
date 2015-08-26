@@ -1,4 +1,4 @@
-Core.Storage = Core.extend(
+Core.ServiceStorage = Core.extend(
     {
         _target : 'local',
         _isValidJSON: function(data, coding)

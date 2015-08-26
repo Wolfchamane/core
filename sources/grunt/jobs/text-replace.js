@@ -1,4 +1,5 @@
 module.exports = function(grunt){
+
     grunt.config(
         'replace',
         {
@@ -39,6 +40,7 @@ module.exports = function(grunt){
             },
             core:{
                 src: '<%= directories.core.dest %>',
+                overwrite: true,
                 replacements: [
                     {
                         from: '_HOST_',
@@ -47,9 +49,12 @@ module.exports = function(grunt){
                     {
                         from: '_PROTOCOL_',
                         to: grunt.template.process('<%= environments.core.' + grunt.config.get('env') + '.protocol %>')
+                    },
+                    {
+                        from: '_ALLOWED_URLS_',
+                        to: grunt.template.process('<%= environments.core.' + grunt.config.get('env') + '.allowedUrl %>')
                     }
-                ],
-                overwrite: true
+                ]
             }
         }
     );
