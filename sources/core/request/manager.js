@@ -1,5 +1,12 @@
 Core.RequestManager = Core.extend(
     {
+        allowedUrls: '_ALLOWED_URLS_',
+        _evalAllowedUrls: function()
+        {
+            var currentLocation = window.location.href;
+            var pattern = new RegExp(this.allowedUrls);
+            return pattern.test(currentLocation);
+        },
         _getData    : function()
         {
             var data = {};
@@ -80,6 +87,18 @@ Core.RequestManager = Core.extend(
             }
         },
         _onRequestFail: function(jqXhr, status, error){},
-        _onRequestAlways: function(jqXhr, status){}
+        _onRequestAlways: function(jqXhr, status){},
+        doRequest: function(){
+            var result = null;
+            if (this._evalAllowedUrls())
+            {
+                result = this._fetch();
+            }
+            else
+            {
+                console.error('Wolfchamane.com CORE is not allowed from your location');
+            }
+            return result;
+        }
     }
 );

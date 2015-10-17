@@ -25,19 +25,21 @@
     },
     "backend": {
       "src": "backend/scripts/",
-      "dest": "../../com.wolfchamane/run/backend/",
-      "dist": "../../com.wolfchamane/dist/backend/"
+      "dest": "../../home/run/backend/",
+      "dist": "../../home/dist/backend/"
     }
   },
   "environments"  : {
     "core": {
       "local": {
         "protocol": "http",
-        "host": "localhost/wolf/"
+        "host": "localhost/wolf/",
+        "allowedUrl": ".+localhost.+"
       },
       "live": {
         "protocol": "http",
-        "host": "wolfchamane.com/"
+        "host": "wolfchamane.com/",
+        "allowedUrl": ".+wolfchamane\\.com.+"
       }
     },
     "backend":{

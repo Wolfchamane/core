@@ -36,12 +36,13 @@
 					array_push($data, $row);
 				}
 
-				$response['data'] = $data;
+				$response['movies'] = $data;
 			}
-			else
-			{
-				$error = "MOVIES_NOT_FOUND";
-			}
+		}
+		else
+		{
+			$error = "MOVIES_NOT_FOUND";
+			//echo $error;
 		}
 	}
 
