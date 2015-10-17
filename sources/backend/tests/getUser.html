@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8"/>
+	</head>
+	<body>
+		<form method="POST" action="../backend/getUser.php">
+			<ul>
+				<li><label for="username"><input type="email" placeholder="Email" id="username" name="email"/></label></li>
+				<li><label for="userpass"><input type="password" placeholder="Password" id="userpass" name="password"/></label></li>
+				<li>
+                    <label for="appName">
+                        <span>Application:</span>
+                        <select id="appName" name="appName">
+                            <option value="mymovies">My Movies</option>
+                            <option value="myrecipes">My Recipes</option>
+                        </select>
+                    </label>
+                </li>
+				<li><button type="submit"><span>Get User</span></button></li>
+			</ul>
+		</form>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+		<script src="../core/core.js"></script>
+	</body>
+</html>
