@@ -7,60 +7,62 @@
  * @author      Arturo Martínez
  * @since       2015-10-24
  */
-Core.ModelUsers = Core.RequestManager.extend
-(
-    {
-        /**
-         * Stores current user
-         * @property    user
-         * @type        {Object}
-         */
-        user            : null,
-        /**
-         * Service URL
-         * @property    url
-         * @type        {String}
-         */
-        url             : '[[HOST]]users.php',
-        /**
-         * Service request params for each REST method
-         */
-        requestParams   : {
-            get         : {
-                appKey  : '',
-                email   : '',
-                password: ''
-            }
-        },
-        /**
-         * Keys to store into browser storage
-         * @property    storageKeys
-         * @type        {String[]}
-         */
-        storageKeys     : ['user'],
-        /**
-         * This model name
-         * @property    modelName
-         * @type        {String|user}
-         * @readOnly
-         */
-        modelName       : 'user',
-        /**
-         * Tries to retrieve an user
-         * @method  getUser
-         * @param data {Object} User's login info
-         * @returns {Core.ModelUsers}
-         */
-        getUser         : function(data)
+(function(){
+    Core.ModelUsers = Core.RequestManager.extend
+    (
         {
-            if (data && (typeof data['email'] !== 'undefined') && (typeof data['password'] !== 'undefined'))
+            /**
+             * Stores current user
+             * @property    user
+             * @type        {Object}
+             */
+            user            : null,
+            /**
+             * Service URL
+             * @property    url
+             * @type        {String}
+             */
+            url             : '[[HOST]]users.php',
+            /**
+             * Service request params for each REST method
+             */
+            requestParams   : {
+                get         : {
+                    appKey  : '',
+                    email   : '',
+                    password: ''
+                }
+            },
+            /**
+             * Keys to store into browser storage
+             * @property    storageKeys
+             * @type        {String[]}
+             */
+            storageKeys     : ['user'],
+            /**
+             * This model name
+             * @property    modelName
+             * @type        {String|user}
+             * @readOnly
+             */
+            modelName       : 'model-users',
+            /**
+             * Tries to retrieve an user
+             * @method  getUser
+             * @param data {Object} User's login info
+             * @returns {Core.ModelUsers}
+             */
+            getUser         : function(data)
             {
-                this.doRequest('get', data)
-                    .then(function(){
-                        this.toStorage();
-                    }.bind(this));
+                if (data && (typeof data['email'] !== 'undefined') && (typeof data['password'] !== 'undefined'))
+                {
+                    this.doRequest('get', data)
+                        .then(function(){
+                            this.toStorage();
+                        }.bind(this));
+                }
+                return this;
             }
-            return this;
         }
-    }
-);
+    );
+})();
