@@ -12,7 +12,8 @@
     "grunt-contrib-jshint"  : ">=0.4.0",
     "grunt-contrib-copy"    : ">=0.4.0",
     "grunt-contrib-watch"   : "~0.4.0",
-    "grunt-contrib-concat"  : ">=0.4.0"
+    "grunt-contrib-concat"  : ">=0.4.0",
+    "grunt-contrib-clean"   : "~0.4.0"
   },
   "directories"   : {
     "core": {
@@ -33,7 +34,7 @@
     "core": {
       "local": {
         "protocol": "http",
-        "host": "localhost/wolf/",
+        "host": "localhost/background/",
         "allowedUrl": ".+localhost.+"
       },
       "live": {
