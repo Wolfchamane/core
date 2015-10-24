@@ -1,56 +1,158 @@
-if (!window.core)
-{
-    window.Core = {};
-}
-Core =
-{
-    host        : '_HOST_',
-    protocol    : '_PROTOCOL_',
-    extend      : function(source)
+/**
+ * ------------------------------------------------------------------------------------------------------------------
+ * PROTOTYPES
+ * ------------------------------------------------------------------------------------------------------------------
+ *
+ * Following are js-base-types prototypes functions:
+ *      - String.capitalize() => Capitalizes a text, i.e: 'hello' becomes 'Hello'
+ *      - String.camelize() => Returns camel case version of a text with '-', i.e: 'whats-app?' becomes 'whatsApp?'
+ *
+ *
+ * @NOTICE: DO NOT MODIFY THIS METHODS!!
+ */
+String.prototype.capitalize = function(){
+    return this.charAt(0).toUpperCase() + this.slice(1);
+};
+String.prototype.camelize = function(){
+    var aux = this;
+    if (aux.lastIndexOf('-') !== -1)
     {
+        aux = aux.split('-');
+        for (var i = 1, l = aux.length; i < l; i++)
+        {
+            aux[i] = aux[i].capitalize();
+        }
+        aux = aux.join().replace(/\,/g, '');
+    }
+    return aux;
+};
 
-        var result = {};
-
-        Object.keys(this).forEach(function (key) {
-            result[key] = this[key];
-        }.bind(this));
-
-        Object.keys(source).forEach(function (key) {
-            if (result.hasOwnProperty(key)) {
-                if (result[key] !== source[key]) {
+/**
+ * Core | Wolfchamane.com main library. Provides classes, methods and models.
+ *
+ * @namespace   Core
+ * @class       Core
+ * @author      Arturo Martínez
+ * @since       2015-10-24
+ * @version     1.0.00
+ */
+window.Core = (function(){
+    return {
+        /**
+         * Copyright
+         * @property    author
+         * @type        {String|'com-wolfchamane'}
+         * @readonly
+         */
+        author      : 'com-wolfchamane',
+        /**
+         * Namespace declaration
+         * @property    namespace
+         * @type        {String|'Core'}
+         * @readonly
+         */
+        namespace   : 'Core',
+        /**
+         * Model name
+         * @property    modelName
+         * @type        {String}
+         */
+        modelName   : '',
+        /**
+         * Stores URL of the host, to use in requests
+         * @property    host
+         * @type        {String}
+         * @readonly
+         * @TODO: goes here? should not it be codified?
+         */
+        host        : '_HOST_',
+        /**
+         * Stores the URL protocol to perform on requests
+         * @property    protocol
+         * @type        {String}
+         * @readonly
+         * @TODO: goes here?
+         */
+        protocol    : '_PROTOCOL_',
+        /**
+         * Objects keys to save into browser storage
+         * @property    storageKeys
+         * @type        {Object[]}
+         */
+        storageKeys : [],
+        /**
+         * Allows to extend any object
+         * @method  extend
+         * @param   source {Object} Which is extending
+         * @returns {Object}
+         */
+        extend      : function(source)
+        {
+            var result = {};
+            result['__proto__'] = this;
+            Object.keys(source).forEach(function (key) {
+                if (result.hasOwnProperty(key)) {
+                    if (result[key] !== source[key]) {
+                        result[key] = source[key];
+                    }
+                }
+                else {
                     result[key] = source[key];
                 }
-            }
-            else {
-                result[key] = source[key];
-            }
-        });
-
-        return result;
-    },
-    toString    : function(replacement, inLowerCase)
-    {
-        var self = this;
-        var name = null;
-        var keys = Object.keys(Core);
-        for (var i = 0; ((i < keys.length) && (name === null)); i++)
+            });
+            return result;
+        },
+        /**
+         * Retrieves current object {@storageKeys}
+         * @method  _getStorageKeys
+         * @returns {String[]}
+         * @private
+         */
+        _getStorageKeys : function()
         {
-            if (self === Core[keys[i]])
+            return this['storageKeys'];
+        },
+        /**
+         * Stores current object {@storageKeys} into browser storage
+         * @method  toStorage
+         * @param   remove {Boolean} If set to <em>false</em>, removes info.
+         */
+        toStorage   : function(remove)
+        {
+            var key = [this.author, this.namespace.toLowerCase()];
+            if (this['modelName'])
             {
-                name = keys[i];
+                key.push(this['modelName']);
             }
-        }
-
-        if (replacement)
+            key = key.join('-');
+            if ((typeof remove === 'undefined') || (remove !== false))
+            {
+                var keys = this._getStorageKeys(),
+                    value = {};
+                keys.forEach(function(key){
+                    value[key] = this[key];
+                }.bind(this));
+                value = window.btoa(JSON.stringify(value));
+                localStorage.setItem(key, value);
+            }
+            else
+            {
+                localStorage.removeItem(key);
+            }
+        },
+        /**
+         * Returns this object name
+         * @method  toString
+         * @returns {String}
+         */
+        toString    : function()
         {
-            name = name.replace(replacement, '');
+            var modelName = this.modelName || '';
+            if ((typeof modelName === 'string') && !!modelName.length)
+            {
+                modelName = modelName.camelize().capitalize();
+            }
+            return [this.namespace.capitalize(), modelName].join('.');
         }
-
-        if (inLowerCase)
-        {
-            name = name.toLowerCase();
-        }
-
-        return name;
-    }
-};
+    };
+})();
