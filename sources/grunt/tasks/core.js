@@ -1,6 +1,6 @@
 module.exports = function(grunt){
 
-    var coreCodeTasks = ['concat:core', 'replace:core'];
+    var coreCodeTasks = ['clean:core', 'concat:core', 'replace:core'];
     if ((grunt.config.get('env') === 'local') && !grunt.config.get('noWatch'))
     {
         coreCodeTasks.push('watch:core');
