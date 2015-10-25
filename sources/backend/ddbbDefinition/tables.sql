@@ -38,7 +38,7 @@ INSERT INTO `permissions`(
     `com_wolfchamane_myrecipes_admin_users`)
 VALUES
     ("root",    1,  1,  1,  1,  0,  1,  1,  1,  1,  1,  1,  0,  1,  1,  1),
-    ("admin"    0,  0,  1,  1,  0,  1,  1,  1,  0,  1,  1,  0,  1,  1,  0),
+    ("admin",   0,  0,  1,  1,  0,  1,  1,  1,  0,  1,  1,  0,  1,  1,  0),
     ("user",    0,  0,  1,  1,  0,  1,  0,  0,  0,  1,  1,  0,  1,  1,  0),
     ("test",    0,  0,  1,  1,  1,  0,  0,  0,  0,  1,  1,  1,  0,  0,  0);
 
@@ -78,8 +78,15 @@ CREATE TABLE IF NOT EXISTS `movies`(
     CONSTRAINT pk_movies PRIMARY KEY (`_id`, `key`)
 );
 
-INSERT INTO `movies` (`_id`, `key`, title`, `genre`, `year`)
-    VALUES ("18_2028_P0M/bW8gc2FiZXMgc2kuLi4/_Q29tZWRpYQ==", "como-sabes-si", "¿Cómo sabes si...?", 2010, "Comedia"),
-           ("10_2017_W1JFQ10qIFsxXQ==_VGVycm9y", "rec-1", "[REC]* [1]", 2007, "Terror"),
-           ("10_2019_W1JFQ10qIFsyXQ==_VGVycm9y", "rec-2", "[REC]* [2]", 2009, "Terror"),
-           ("21_2033_WwdSRUNdKiBbM10gLSBHP25lc2lz_VGVycm9y", "rec-3", "[REC]* [3] - Génesis", 2012, "Terror");
+INSERT INTO `movies` (
+    `_id`,
+    `key`,
+    `title`,
+    `year`,
+    `genre`)
+VALUES
+    ("2015-01-01|01|a-scanner-darkly|2020", "a-scanner-darkly", "A Scanner Darkly", 2006, "01"),
+    ("2015-01-01|09|a-un-paso-de-la-muerte|2026", "a-un-paso-de-la-muerte", "A un paso de la muerte", 2009, "09"),
+    ("2015-01-01|10|acantilado-rojo|2023", "acantilado-rojo", "Acantilado rojo", 2009, "10"),
+    ("2015-01-01|07|acero-puro|2020", "acero-puro", "Acero Puro", 2011, "07"),
+    ("2015-01-01|10|acto-de-valor|2023", "acto-de-valor", "Acto de valor", 2012, "10");
