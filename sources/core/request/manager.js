@@ -37,6 +37,12 @@
              */
             modelName: 'request-manager',
             /**
+             * Default property for data response storage
+             * @property    storeIn
+             * @type        {String}
+             */
+            storeIn: '',
+            /**
              * AJAX request parameters
              * @property    requestParams
              * @type        {Object}
@@ -194,7 +200,7 @@
              * @private
              */
             _saveResponse: function (response) {
-                var storeIn = this.modelName.substr(0, this.modelName.lastIndexOf('s')).replace('model-', '');
+                var storeIn = this.storeIn || this.modelName.substr(0, this.modelName.lastIndexOf('s')).replace('model-', '');
                 if (this.hasOwnProperty(storeIn)) {
                     this[storeIn] = response.data;
                 }
