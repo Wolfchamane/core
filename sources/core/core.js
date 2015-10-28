@@ -153,6 +153,35 @@ window.Core = (function(){
                 modelName = modelName.camelize().capitalize();
             }
             return [this.namespace.capitalize(), modelName].join('.');
+        },
+        /**
+         * Retrieves this object property value
+         * @param property {String}
+         */
+        get: function(property)
+        {
+            var value;
+            if ((typeof property === 'string') && this.hasOwnProperty(property))
+            {
+                value = this[property];
+            }
+            return value;
+        },
+        /**
+         * Sets this object property some value
+         * @param property {String} To set
+         * @param value {Object}
+         * @returns {Boolean}
+         */
+        set: function(property, value)
+        {
+            var isSet = false;
+            if (this.hasOwnProperty(property))
+            {
+                this[property] = value;
+                isSet = true;
+            }
+            return isSet;
         }
     };
 })();
