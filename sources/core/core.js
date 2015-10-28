@@ -8,7 +8,7 @@
  *      - String.camelize() => Returns camel case version of a text with '-', i.e: 'whats-app?' becomes 'whatsApp?'
  *
  *
- * @NOTICE: DO NOT MODIFY THIS METHODS!!
+ * @NOTICE: DO NOT MODIFY THIS PROTOS!!
  */
 String.prototype.capitalize = function(){
     return this.charAt(0).toUpperCase() + this.slice(1);
@@ -26,7 +26,36 @@ String.prototype.camelize = function(){
     }
     return aux;
 };
+/**
+ * ------------------------------------------------------------------------------------------------------------------
+ * COMMON METHODS
+ * ------------------------------------------------------------------------------------------------------------------
+ * @NOTICE: Do not modify this methods!
+ */
+ /**
+  * Evaluates if a value is an array object or not
+  * @method isArray
+  * @param value {Object}
+  * @return {Boolean}
+  */
+ function isArray (value){
+    return ((typeof value === 'object') && (value !== null) && value.hasOwnProperty('length'));
 
+ };
+ /**
+  * Evaluates if a value is empty or not
+  * @method isEmpty
+  * @param value {Object}
+  * @returns {Boolean}
+  */
+ function isEmpty (value){
+    var result = ((typeof value === 'undefined') || (value === null));
+    if (!result && isArray(value) && !value.length)
+    {
+        result = true;
+    }
+    return result;
+ };
 /**
  * Core | Wolfchamane.com main library. Provides classes, methods and models.
  *
