@@ -32,30 +32,31 @@ String.prototype.camelize = function(){
  * ------------------------------------------------------------------------------------------------------------------
  * @NOTICE: Do not modify this methods!
  */
- /**
-  * Evaluates if a value is an array object or not
-  * @method isArray
-  * @param value {Object}
-  * @return {Boolean}
-  */
- function isArray (value){
+/**
+ * Evaluates if a value is an array object or not
+ * @method isArray
+ * @param value {Object}
+ * @return {Boolean}
+ */
+function isArray (value)
+{
     return ((typeof value === 'object') && (value !== null) && value.hasOwnProperty('length'));
-
- };
- /**
-  * Evaluates if a value is empty or not
-  * @method isEmpty
-  * @param value {Object}
-  * @returns {Boolean}
-  */
- function isEmpty (value){
+}
+/**
+ * Evaluates if a value is empty or not
+ * @method isEmpty
+ * @param value {Object}
+ * @returns {Boolean}
+ */
+function isEmpty (value)
+{
     var result = ((typeof value === 'undefined') || (value === null));
     if (!result && isArray(value) && !value.length)
     {
         result = true;
     }
     return result;
- };
+}
 /**
  * Core | Wolfchamane.com main library. Provides classes, methods and models.
  *
