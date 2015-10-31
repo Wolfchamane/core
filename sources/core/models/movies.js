@@ -39,18 +39,7 @@
             /**
              * @inheritDoc
              */
-            url: '[[HOST]]/movies.php',
-            //@todo
-            _parseMoviesGenre: function()
-            {
-                var movies = this.movies;
-                movies.forEach(
-                    function(movie)
-                    {
-                        movies[movies.lastIndexOf(movie)].genre = Core.ModelMovieGenre.parse(movie.genre);
-                    }
-                );
-            },
+            url: '[[HOST]]movies.php',
             /**
              * Gets the total of movies in DDBB
              * @method getMovies
@@ -62,14 +51,21 @@
                 }.bind(this));
                 return this;
             },
-            /*_onRequestSuccess: function()
+            /**
+             * @inheritDoc
+             * @private
+             */
+            _onRequestSuccess: function()
             {
                 Core.RequestManager._onRequestSuccess.apply(this, arguments);
-                if (this.movies && this.movies.length)
+                if (!isEmpty(this.movies) && isArray(this.movies))
                 {
-                    this._parseMoviesGenre();
+                    this.movies.forEach(function(item, index){
+                        var model = new Core.ModelMovie();
+                        this.movies[index] = model.parse(item);
+                    }.bind(this));
                 }
-            }*/
+            }
         }
     );
 })();
