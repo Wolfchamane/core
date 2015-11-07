@@ -4,12 +4,8 @@ module.exports = function(grunt)
         'watch',
         {
             core:{
-                files: '<%= directories.core.scripts %>**/*.js',
+                files: '<%= directories.scripts %>**/*.js',
                 tasks: ['concat:core', 'replace:core']
-            },
-            php:{
-                files: '<%= directories.backend.src %>**/*.php',
-                tasks: ['php:code']
             }
         }
     );

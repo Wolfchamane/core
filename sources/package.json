@@ -16,49 +16,24 @@
     "grunt-contrib-clean"   : "~0.4.0"
   },
   "directories"   : {
-    "core": {
-      "scripts": "core/",
-      "dest": "../run/core.js",
-      "dist": "../dist/core.js",
-      "vendors": {
-        "jquery": "vendors/jquery-2.1.4/jquery.min.js"
-      }
-    },
-    "backend": {
-      "src": "backend/scripts/",
-      "dest": "../../home/run/backend/",
-      "dist": "../../home/dist/backend/"
+    "scripts": "scripts/",
+    "statics": "statics/",
+    "dest": "../run/",
+    "dist": "../dist/",
+    "vendors": {
+      "jquery": "vendors/jquery-2.1.4/jquery.min.js"
     }
   },
   "environments"  : {
-    "core": {
-      "local": {
-        "protocol": "http",
-        "host": "localhost/background/",
-        "allowedUrl": ".+localhost.+"
-      },
-      "live": {
-        "protocol": "http",
-        "host": "wolfchamane.com/",
-        "allowedUrl": ".+wolfchamane\\.com.+"
-      }
+    "local": {
+      "protocol": "http",
+      "host": "localhost/background/",
+      "allowedUrl": ".+localhost.+"
     },
-    "backend":{
-      "local": {
-        "protocol": "http",
-        "host": "localhost",
-        "port": "3306",
-        "usr": "root",
-        "pwd": "123456",
-        "org": "wolfchamane_mapp"
-      },
-      "live": {
-        "protocol": "http",
-        "host": "fdb2.awardspace.com",
-        "usr": "wolfchamane_mapp",
-        "pwd": "1986root",
-        "org": "wolfchamane_mapp"
-      }
+    "live": {
+      "protocol": "http",
+      "host": "wolfchamane.com/",
+      "allowedUrl": ".+wolfchamane\\.com.+"
     }
   }
 }
