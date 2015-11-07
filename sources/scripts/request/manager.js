@@ -125,7 +125,7 @@
              */
             _getConfig: function () {
                 return {
-                    async: this.async || false,
+                    async: this.async || true,
                     crossDomain: this.crossDomain || true,
                     cache: this.cache || false,
                     data: this._getData(),
