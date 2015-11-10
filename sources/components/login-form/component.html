@@ -1,0 +1,77 @@
+<link rel="import" href="../vendors/paper-input/paper-input.html" />
+<link rel="import" href="../vendors/paper-button/paper-button.html" />
+<dom-module is="login-form">
+    <template>
+        <style>
+            :host{
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                display: block;
+                padding: 5px;
+            }
+            ul{
+                list-style:none;
+                width: 100%;
+                height: auto;
+                overflow: hidden;
+                margin: 0;
+                padding: 0;
+            }
+            ul li{
+                width: 100%;
+                display: block;
+                margin: 0;
+            }
+            ul li:last-child{
+                margin-top: 5px;
+                text-align: center;
+            }
+            paper-button{
+                background: #4285f4;
+                color: #fff;
+            }
+        </style>
+        <ul>
+            <li>
+                <paper-input type="email" label="Email" value="{{email::input}}"></paper-input>
+            </li>
+            <li>
+                <paper-input type="password" label="Password" value="{{password::input}}"></paper-input>
+            </li>
+            <li>
+                <paper-button raised on-click="doLogin">Login</paper-button>
+            </li>
+        </ul>
+    </template>
+    <script>
+
+        if (Polymer)
+        {
+            Polymer({
+                is: 'login-form',
+                properties: {
+                    email: String,
+                    password: String
+                },
+                doLogin: function()
+                {
+                    debugger;
+                    if (typeof Core !== 'undefined')
+                    {
+                        var email = this.email;
+                        var password = this.password;
+                        if (!isEmpty(email) && !isEmpty(password))
+                        {
+                            password = window.btoa(password);
+                            var request = Core.ModelUsers.getUser({email: email, password: password});
+                            if (request)
+                            {
+                                request.then(function(){});
+                            }
+                        }
+                    }
+                }
+            });
+        }
+    </script>
+</dom-module>

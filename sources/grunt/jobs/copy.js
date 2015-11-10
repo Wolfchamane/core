@@ -35,7 +35,9 @@ module.exports = function(grunt)
                 flatten: false,
                 rename: function(dest, src)
                 {
-                    return dest + 'components/' + src;
+                    src = src.replace(/(.+)\/.+(\.html)/, '$1$2');
+                    dest = dest + 'components/' + src;
+                    return dest;
                 }
             }
         }
