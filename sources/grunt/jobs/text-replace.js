@@ -20,6 +20,16 @@ module.exports = function(grunt){
                         to: grunt.template.process('<%= environments.' + grunt.config.get('env') + '.allowedUrl %>')
                     }
                 ]
+            },
+            statics: {
+                src: '<%= directories.dest %>index.html',
+                overwrite: true,
+                replacements: [
+                    {
+                        from: '__VENDORS__',
+                        to: './vendors/'
+                    }
+                ]
             }
         }
     );

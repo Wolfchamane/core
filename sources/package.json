@@ -20,10 +20,11 @@
     "statics": "statics/",
     "dest": "../run/",
     "dist": "../dist/",
-    "vendors": {
-      "jquery": "vendors/jquery-2.1.4/jquery.min.js"
-    },
-    "bower": "bower_components/"
+    "vendorsDest": "../vendors",
+    "vendors": "vendors/",
+    "jquery": "<%= directories.vendors %>jquery-2.1.4/jquery.min.js",
+    "bower": "bower_components/",
+    "components": "components/"
   },
   "environments"  : {
     "local": {

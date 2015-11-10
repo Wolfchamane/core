@@ -13,6 +13,7 @@ module.exports = function(grunt)
                 expand: true,
                 cwd: '<%= directories.bower %>',
                 src: [
+                    '!**/index.html',
                     '**/*.html',
                     '**/*.js',
                     '!**/demo/**',
@@ -24,6 +25,17 @@ module.exports = function(grunt)
                 {
                     dest = dest + 'vendors/' + src;
                     return dest;
+                }
+            },
+            components: {
+                expand: true,
+                cwd: '<%= directories.components %>',
+                src: ['**/*.html'],
+                dest: '<%= directories.dest %>',
+                flatten: false,
+                rename: function(dest, src)
+                {
+                    return dest + 'components/' + src;
                 }
             }
         }

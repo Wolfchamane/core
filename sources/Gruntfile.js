@@ -12,7 +12,7 @@ module.exports = function(grunt){
 	config.env = env;
 
 	//Flag if use watchers or not
-	config.noWatch = ((grunt.env === 'local') && !!grunt.option('noWatch')) || false;
+	config.noWatch = !!grunt.option('noWatch') || false;
 
 	//Set version
 	config.version += '.' + (new Date()).getTime().toString().substr(0,7);
