@@ -22,7 +22,8 @@
     "dist": "../dist/",
     "vendors": {
       "jquery": "vendors/jquery-2.1.4/jquery.min.js"
-    }
+    },
+    "bower": "bower_components/"
   },
   "environments"  : {
     "local": {
