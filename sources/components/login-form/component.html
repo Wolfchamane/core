@@ -55,7 +55,6 @@
                 },
                 doLogin: function()
                 {
-                    debugger;
                     if (typeof Core !== 'undefined')
                     {
                         var email = this.email;
@@ -63,10 +62,17 @@
                         if (!isEmpty(email) && !isEmpty(password))
                         {
                             password = window.btoa(password);
-                            var request = Core.ModelUsers.getUser({email: email, password: password});
+                            var model = Core.ModelUsers;
+                            var request = model.getUser({email: email, password: password});
                             if (request)
                             {
-                                request.then(function(){});
+                                request.then(function(){
+                                    if (!isEmpty(model.get('user')))
+                                    {
+                                        //@todo: transit to 'global-position'
+                                        alert('Welcome ' + model.get('user').alias + '!');
+                                    }
+                                });
                             }
                         }
                     }

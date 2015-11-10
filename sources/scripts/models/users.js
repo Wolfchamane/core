@@ -54,14 +54,12 @@
              */
             getUser         : function(data)
             {
+                var request = null;
                 if (data && (typeof data['email'] !== 'undefined') && (typeof data['password'] !== 'undefined'))
                 {
-                    this.doRequest('get', data)
-                        .then(function(){
-                            this.toStorage();
-                        }.bind(this));
+                    request = this.doRequest('get', data);
                 }
-                return this;
+                return request;
             }
         }
     );
