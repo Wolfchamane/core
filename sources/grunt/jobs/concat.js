@@ -4,7 +4,7 @@ module.exports = function(grunt){
         {
             core: {
                 src: [
-                    '<%= directories.vendors.jquery %>',
+                    '<%= directories.jquery %>',
                     '<%= directories.scripts %>' + 'core.js',
                     '<%= directories.scripts %>' + 'request/**/*.js',
                     '<%= directories.scripts %>' + 'services/**/*.js',
