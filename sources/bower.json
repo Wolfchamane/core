@@ -1,0 +1,23 @@
+{
+  "name": "wolfchamane-core",
+  "description": "Wolfchamane.com Core Library",
+  "main": "core.js",
+  "authors": [
+    "Arturo Martínez"
+  ],
+  "license": "MIT",
+  "moduleType": [],
+  "homepage": "http://wolfchamane.com",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#^1.2.0",
+    "paper-input": "PolymerElements/paper-input#~1.0.18"
+  }
+}
