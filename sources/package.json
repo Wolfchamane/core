@@ -16,15 +16,15 @@
     "grunt-contrib-clean"   : "~0.4.0"
   },
   "directories"   : {
-    "scripts": "scripts/",
-    "statics": "statics/",
+    "scripts": "html/scripts/",
+    "statics": "html/statics/",
     "dest": "../run/",
     "dist": "../dist/",
     "vendorsDest": "../vendors",
     "vendors": "vendors/",
     "jquery": "<%= directories.vendors %>jquery-2.1.4/jquery.min.js",
     "bower": "bower_components/",
-    "components": "components/"
+    "components": "html/components/"
   },
   "environments"  : {
     "local": {
