@@ -20,7 +20,7 @@
     "statics": "html/statics/",
     "dest": "../run/",
     "dist": "../dist/",
-    "vendorsDest": "../vendors",
+    "vendorsDest": "../vendors/",
     "vendors": "vendors/",
     "jquery": "<%= directories.vendors %>jquery-2.1.4/jquery.min.js",
     "bower": "bower_components/",

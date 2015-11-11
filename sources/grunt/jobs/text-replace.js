@@ -30,6 +30,16 @@ module.exports = function(grunt){
                         to: './vendors/'
                     }
                 ]
+            },
+            components: {
+                src: '<%= directories.dest %>components/*.html',
+                overwrite: true,
+                replacements: [
+                    {
+                        from: '__VENDORSDEST__',
+                        to: grunt.template.process('<%= directories.vendorsDest %>')
+                    }
+                ]
             }
         }
     );

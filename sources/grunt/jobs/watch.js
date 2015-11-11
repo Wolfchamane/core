@@ -3,9 +3,12 @@ module.exports = function(grunt)
     grunt.config(
         'watch',
         {
-            core:{
-                files: '<%= directories.scripts %>**/*.js',
-                tasks: ['concat:core', 'replace:core']
+            html: {
+                files: [
+                    '<%= directories.scripts %>**/*.js',
+                    '<%= directories.components %>**/*.html'
+                ],
+                tasks: ['core', 'components']
             }
         }
     );
