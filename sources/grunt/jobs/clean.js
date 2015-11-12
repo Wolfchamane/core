@@ -2,7 +2,7 @@ module.exports = function(grunt){
     grunt.config(
         'clean',
         {
-            core: {
+            dest: {
                 options: {
                     force: true
                 },
