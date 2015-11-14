@@ -1,6 +1,6 @@
 module.exports = function(grunt){
 
-    var defaultTasks = ['html', 'components', 'statics', 'vendors'];
+    var defaultTasks = ['clean:dest', 'html', 'components', 'statics', 'vendors'];
     if (!grunt.config.get('noWatch'))
     {
         defaultTasks.push('watch:sources');
