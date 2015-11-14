@@ -12,17 +12,29 @@
 
         <hr/>
 
-        <h2>login-form</h2>
-        <div>
-            <p>Code:</p>
-            <pre>
-                &lt;login-form&gt;&lt;/login-form&gt;
-            </pre>
-            <p>Sample:</p>
-            <login-form></login-form>
-        </div>
+        <div id="web-content"></div>
 
         <script src="./core.js"></script>
         <script src="__VENDORS__webcomponentsjs/webcomponents.min.js"></script>
+        <script>
+            Core.Router.init({
+                base: '/core',
+                rootNode: 'web-content',
+                paths: [
+                    {
+                        path: '/',
+                        template: '<login-form></login-form>'
+                    },
+                    {
+                        path: 'global-position',
+                        template: '<h1>Global Position</h1><p><a href="./">Index</a><br/><a href="./about">About</a></p>'
+                    },
+                    {
+                        path: 'about',
+                        template: '<h1>About</h1><p><a href="./">Index</a><br/><a href="./globalPosition">Global Position</a></p>'
+                    }
+                ]
+            });
+        </script>
     </body>
 </html>

@@ -69,8 +69,7 @@
                                 request.then(function(){
                                     if (!isEmpty(model.get('user')))
                                     {
-                                        //@todo: transit to 'global-position'
-                                        alert('Welcome ' + model.get('user').alias + '!');
+                                        Core.Router.transitTo('global-position');
                                     }
                                 });
                             }
