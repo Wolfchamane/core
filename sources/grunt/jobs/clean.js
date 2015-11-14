@@ -2,11 +2,11 @@ module.exports = function(grunt){
     grunt.config(
         'clean',
         {
-            core: {
+            dest: {
                 options: {
                     force: true
                 },
-                src: '<%= directories.dest %>'
+                src: '<%= directories.dest.base %>'
             }
         }
     );

@@ -4,7 +4,7 @@ module.exports = function(grunt){
         'replace',
         {
             core:{
-                src: '<%= directories.dest %>core.js',
+                src: '<%= directories.dest.base %>core.js',
                 overwrite: true,
                 replacements: [
                     {
@@ -22,7 +22,7 @@ module.exports = function(grunt){
                 ]
             },
             statics: {
-                src: '<%= directories.dest %>index.html',
+                src: '<%= directories.dest.base %>index.html',
                 overwrite: true,
                 replacements: [
                     {
@@ -32,12 +32,12 @@ module.exports = function(grunt){
                 ]
             },
             components: {
-                src: '<%= directories.dest %>components/*.html',
+                src: '<%= directories.dest.base %>components/*.html',
                 overwrite: true,
                 replacements: [
                     {
                         from: '__VENDORSDEST__',
-                        to: grunt.template.process('<%= directories.vendorsDest %>')
+                        to: '../vendors/'
                     }
                 ]
             }
