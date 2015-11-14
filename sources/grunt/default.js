@@ -1,9 +1,9 @@
 module.exports = function(grunt){
 
-    var defaultTasks = ['core', 'polymer', 'components', 'statics'];
+    var defaultTasks = ['core', 'components', 'statics', 'vendors'];
     if (!grunt.config.get('noWatch'))
     {
-        defaultTasks.push('watch:core');
+        defaultTasks.push('watch:sources');
     }
 
     grunt.registerTask(

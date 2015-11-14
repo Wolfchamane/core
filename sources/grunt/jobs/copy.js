@@ -9,7 +9,7 @@ module.exports = function(grunt)
                 dest: '<%= directories.dest %>',
                 flatten: true
             },
-            polymer: {
+            vendors: {
                 expand: true,
                 cwd: '<%= directories.bower %>',
                 src: [
@@ -17,7 +17,8 @@ module.exports = function(grunt)
                     '**/*.html',
                     '**/*.js',
                     '!**/demo/**',
-                    '!**/test/**'
+                    '!**/test/**',
+                    '!**/index.js'
                 ],
                 dest: '<%= directories.dest %>',
                 flatten: false,

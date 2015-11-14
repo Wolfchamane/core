@@ -1,8 +1,8 @@
 module.exports = function(grunt){
 
-    var polymerTasks = ['copy:polymer'];
+    var polymerTasks = ['copy:vendors'];
     grunt.registerTask(
-        'polymer',
+        'vendors',
         polymerTasks
     );
 };
