@@ -1,8 +1,8 @@
 module.exports = function(grunt){
 
-    var coreCodeTasks = ['concat:core', 'replace:core'];
+    var coreCodeTasks = ['concat:html', 'replace:core'];
     grunt.registerTask(
-        'core',
+        'html',
         coreCodeTasks
     );
 };

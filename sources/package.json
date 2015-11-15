@@ -15,16 +15,27 @@
     "grunt-contrib-concat"  : ">=0.4.0",
     "grunt-contrib-clean"   : "~0.4.0"
   },
-  "directories"   : {
-    "scripts": "html/scripts/",
-    "statics": "html/statics/",
-    "dest": "../run/",
-    "dist": "../dist/",
-    "vendorsDest": "../vendors/",
-    "vendors": "vendors/",
-    "jquery": "<%= directories.vendors %>jquery-2.1.4/jquery.min.js",
-    "bower": "bower_components/",
-    "components": "html/components/"
+  "directories"     : {
+    "html"          : {
+      "base"        : "html/",
+      "components"  : "<%= directories.html.base %>/components/",
+      "scripts"     : "<%= directories.html.base %>/scripts/",
+      "statics"     : "<%= directories.html.base %>/statics/"
+    },
+    "dest"          : {
+      "base"        : "../run/",
+      "dist"        : "../dist/",
+      "vendors"     : "<%= directories.dest.base %>vendors/",
+      "components"  : "<%= directories.dest.base %>components/"
+    },
+    "bower"         : {
+      "base"        : "bower_components/",
+      "page"        : "<%= directories.bower.base %>page/page.js"
+    },
+    "vendors"       : {
+      "base"        : "vendors/",
+      "jquery"      : "<%= directories.vendors.base %>jquery-2.1.4/jquery.min.js"
+    }
   },
   "environments"  : {
     "local": {

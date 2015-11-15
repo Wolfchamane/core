@@ -6,7 +6,7 @@ module.exports = function(grunt){
                 options: {
                     force: true
                 },
-                src: '<%= directories.dest %>'
+                src: '<%= directories.dest.base %>'
             }
         }
     );

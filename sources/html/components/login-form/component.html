@@ -69,12 +69,7 @@
                                 request.then(function(){
                                     if (!isEmpty(model.get('user')))
                                     {
-                                        //@todo: will use 'Core.Router'
-                                        if (typeof page !== 'undefined')  
-                                        {
-                                            page('/global-position');
-                                        }
-                                        alert('Welcome ' + model.get('user').alias + '!');
+                                        Core.Router.transitTo('global-position');
                                     }
                                 });
                             }

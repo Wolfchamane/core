@@ -5,9 +5,9 @@ module.exports = function(grunt){
 
 	//Set environment
 	var env = grunt.option('env') || 'local';
-	if (env === 'live'){
-		config.directories.core.dest = config.directories.core.dist;
-		config.directories.backend.dest = config.directories.backend.dist;
+	if (env === 'live')
+	{
+		config.directories.dest.base = config.directories.dest.dist;
 	}
 	config.env = env;
 

@@ -5,39 +5,33 @@ module.exports = function(grunt)
         {
             index: {
                 expand: true,
-                src: ['<%= directories.statics %>index.html'],
-                dest: '<%= directories.dest %>',
+                src: ['<%= directories.html.statics %>index.html'],
+                dest: '<%= directories.dest.base %>',
                 flatten: true
             },
-            polymer: {
+            vendors: {
                 expand: true,
-                cwd: '<%= directories.bower %>',
+                cwd: '<%= directories.bower.base %>',
                 src: [
                     '!**/index.html',
                     '**/*.html',
                     '**/*.js',
                     '!**/demo/**',
-                    '!**/test/**'
+                    '!**/test/**',
+                    '!page/**'
                 ],
-                dest: '<%= directories.dest %>',
-                flatten: false,
-                rename: function(dest, src)
-                {
-                    dest = dest + 'vendors/' + src;
-                    return dest;
-                }
+                dest: '<%= directories.dest.vendors %>',
+                flatten: false
             },
             components: {
                 expand: true,
-                cwd: '<%= directories.components %>',
+                cwd: '<%= directories.html.components %>',
                 src: ['**/*.html'],
-                dest: '<%= directories.dest %>',
+                dest: '<%= directories.dest.components %>',
                 flatten: false,
                 rename: function(dest, src)
                 {
-                    src = src.replace(/(.+)\/.+(\.html)/, '$1$2');
-                    dest = dest + 'components/' + src;
-                    return dest;
+                    return dest + src.replace(/(.+)\/.+(\.html)/, '$1$2');
                 }
             }
         }
