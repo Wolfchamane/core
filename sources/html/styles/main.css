@@ -1,0 +1,18 @@
+@media screen{
+	html,body{
+        background-color: #fff;
+        color: #000;
+        font: normal normal 14px/1.2 Arial, 'sans-serif';
+        overflow: hidden;
+    }
+
+    .animated {
+        transition: all ease-in-out 1s;
+    }
+    .animated.animation-on{
+        opacity: 0;
+    }
+    .animated.animation-off{
+        opacity: 1;
+    }
+}

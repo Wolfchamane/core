@@ -20,7 +20,8 @@
       "base"        : "html/",
       "components"  : "<%= directories.html.base %>/components/",
       "scripts"     : "<%= directories.html.base %>/scripts/",
-      "statics"     : "<%= directories.html.base %>/statics/"
+      "statics"     : "<%= directories.html.base %>/statics/",
+      "styles"      : "<%= directories.html.base %>/styles/"
     },
     "dest"          : {
       "base"        : "../run/",

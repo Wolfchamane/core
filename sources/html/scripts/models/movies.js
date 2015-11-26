@@ -46,10 +46,9 @@
              */
             getMovies: function()
             {
-                this.doRequest('get').then(function(){
+                return this.doRequest('get').then(function(){
                     this.toStorage();
                 }.bind(this));
-                return this;
             },
             /**
              * @inheritDoc

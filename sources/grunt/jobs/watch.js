@@ -6,6 +6,7 @@ module.exports = function(grunt)
             sources:{
                 files: [
                     '<%= directories.html.scripts %>**/*.js',
+                    '<%= directories.html.styles %>**/*.css',
                     '<%= directories.html.components %>**/*.html'
                 ],
                 tasks: ['html', 'components']

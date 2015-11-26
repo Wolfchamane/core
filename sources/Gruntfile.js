@@ -15,7 +15,7 @@ module.exports = function(grunt){
 	config.noWatch = !!grunt.option('noWatch') || false;
 
 	//Set version
-	config.version += '.' + (new Date()).getTime().toString().substr(0,7);
+	config.appVersion += '.' + (new Date()).getTime().toString().substr(0,7);
 
     //Set name as 'Some Nice String' format
     config.name = config.name.split('-');
@@ -23,6 +23,13 @@ module.exports = function(grunt){
         config.name[config.name.lastIndexOf(text)] = text.charAt(0).toUpperCase() + text.slice(1);
     });
     config.name = config.name.join(' ');
+
+    //log
+    console.log('@PROJECT: ' + config.name);
+    console.log('@Version: ' + config.appVersion);
+    console.log('@Environment: ' + config.env);
+    console.log('@Watchers? ' + (!!config.noWatch ? 'false' : 'true'));
+    console.log('');
 
 	//Init config
 	grunt.initConfig(config);

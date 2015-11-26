@@ -13,6 +13,9 @@
     Core.Router = Core.extend
     (
         {
+            _styleOnAnimation: 'animation-on',
+            _styleOffAnimation: 'animation-off',
+            _animationTimeout: 600,
             /**
              * @inheritDoc
              */
@@ -34,16 +37,41 @@
             /**
              * Resolves all paths inscribing into {@_rootNode} the template stored in {@_routes} for the path
              * @param   path {String}
+             * @param   context {Object}
              * @private
              */
-            _resolve    : function(path)
+            _resolve    : function(path, context)
             {
                 if (this._routes.hasOwnProperty(path))
                 {
                     var element = document.getElementById(this._rootNode);
                     if (element)
                     {
-                        element.innerHTML = this._routes[path];
+                        element.classList.remove(this.get('_styleOffAnimation'));
+                        element.classList.add(this.get('_styleOnAnimation'));
+                        setTimeout(
+                            function()
+                            {                                
+                                setTimeout(
+                                    function()
+                                    {
+                                        var params = context
+                                            ? context.state
+                                            : null;
+                                        if (params.path)
+                                        {
+                                            delete params.path;
+                                        }
+                                        element.innerHTML = this._routes[path].apply(this, [params]);
+                                        element.classList.remove(this.get('_styleOnAnimation'));
+                                        element.classList.add(this.get('_styleOffAnimation'));
+
+                                    }.bind(this),
+                                    this.get('_animationTimeout')
+                                );
+                            }.bind(this),
+                            this.get('_animationTimeout')
+                        );
                     }
                 }
             },
@@ -110,7 +138,7 @@
              * Transits to new path, if exists
              * @param path {String}
              */
-            transitTo   : function(path)
+            transitTo   : function(path, options)
             {
                 var fixedPath = path;
                 if (fixedPath.lastIndexOf('-') !== -1)
@@ -123,7 +151,7 @@
                 }
                 if (this._routes.hasOwnProperty(fixedPath))
                 {
-                    page(fixedPath);
+                    page(fixedPath, options);
                 }
             },
             /**
