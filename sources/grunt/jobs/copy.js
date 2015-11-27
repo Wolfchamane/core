@@ -3,9 +3,9 @@ module.exports = function(grunt)
     grunt.config(
         'copy',
         {
-            index: {
+            demo: {
                 expand: true,
-                src: ['<%= directories.html.statics %>index.html'],
+                src: ['<%= directories.demo.statics %>index.html'],
                 dest: '<%= directories.dest.base %>',
                 flatten: true
             },

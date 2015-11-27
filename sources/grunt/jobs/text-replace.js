@@ -21,7 +21,7 @@ module.exports = function(grunt){
                     }
                 ]
             },
-            statics: {
+            demo: {
                 src: '<%= directories.dest.base %>index.html',
                 overwrite: true,
                 replacements: [
