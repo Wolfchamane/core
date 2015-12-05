@@ -16,6 +16,12 @@ module.exports = function(grunt){
             css: {
                 src: ['<%= directories.html.styles %>**/*.css'],
                 dest: '<%= directories.dest.base %>core.css'
+            },
+            demo: {
+                src: [
+                    '<%= directories.demo.app %>**/*.js'
+                ],
+                dest: '<%= directories.dest.base %>demo.js'
             }
         }
     );

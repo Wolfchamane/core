@@ -42,13 +42,17 @@
              */
             _resolve    : function(path, context)
             {
-                if (this._routes.hasOwnProperty(path))
+                var self = this;
+                if (self._routes.hasOwnProperty(path))
                 {
-                    var element = document.getElementById(this._rootNode);
+                    var element = document.getElementById(self._rootNode);
                     if (element)
                     {
-                        element.classList.remove(this.get('_styleOffAnimation'));
-                        element.classList.add(this.get('_styleOnAnimation'));
+                        if (element.classList.contains(self.get('_styleOffAnimation')))
+                        {
+                            element.classList.remove(self.get('_styleOffAnimation'));
+                        }
+                        element.classList.add(self.get('_styleOnAnimation'));
                         setTimeout(
                             function()
                             {                                
@@ -62,15 +66,15 @@
                                         {
                                             delete params.path;
                                         }
-                                        element.innerHTML = this._routes[path].apply(this, [params]);
-                                        element.classList.remove(this.get('_styleOnAnimation'));
-                                        element.classList.add(this.get('_styleOffAnimation'));
+                                        element.innerHTML = self._routes[path].apply(self, [params]);
+                                        element.classList.remove(self.get('_styleOnAnimation'));
+                                        element.classList.add(self.get('_styleOffAnimation'));
 
-                                    }.bind(this),
-                                    this.get('_animationTimeout')
+                                    },
+                                    self.get('_animationTimeout')
                                 );
-                            }.bind(this),
-                            this.get('_animationTimeout')
+                            },
+                            self.get('_animationTimeout')
                         );
                     }
                 }
@@ -149,7 +153,7 @@
                 {
                     fixedPath = '/' + fixedPath;
                 }
-                if (this._routes.hasOwnProperty(fixedPath))
+                if (this._routes && this._routes.hasOwnProperty(fixedPath))
                 {
                     page(fixedPath, options);
                 }

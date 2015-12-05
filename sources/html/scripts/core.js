@@ -61,16 +61,25 @@ window.Core = (function(){
         {
             var result = {};
             result['__proto__'] = this;
-            Object.keys(source).forEach(function (key) {
-                if (result.hasOwnProperty(key)) {
-                    if (result[key] !== source[key]) {
+            var properties = null;
+            try
+            {
+                properties = Object.keys(source);
+            }
+            catch (e) {}
+            if (!isEmpty(properties))
+            {
+                properties.forEach(function (key) {
+                    if (result.hasOwnProperty(key)) {
+                        if (result[key] !== source[key]) {
+                            result[key] = source[key];
+                        }
+                    }
+                    else {
                         result[key] = source[key];
                     }
-                }
-                else {
-                    result[key] = source[key];
-                }
-            });
+                });
+            }
             return result;
         },
         /**
@@ -113,7 +122,6 @@ window.Core = (function(){
         },
         /**
          * Returns this object name
-         * @method  toString
          * @returns {String}
          */
         toString    : function()
@@ -128,6 +136,7 @@ window.Core = (function(){
         /**
          * Retrieves this object property value
          * @param property {String}
+         * @returns value {Object}
          */
         get: function(property)
         {
@@ -135,6 +144,11 @@ window.Core = (function(){
             if ((typeof property === 'string') && this.hasOwnProperty(property))
             {
                 value = this[property];
+            }
+            //@NOTICE: if value is empty, try into this parent object
+            if (isEmpty(value) && !!this['__proto__'])
+            {
+                value = this.get.apply(this['__proto__'], [property]);
             }
             return value;
         },
@@ -147,7 +161,7 @@ window.Core = (function(){
         set: function(property, value)
         {
             var isSet = false;
-            if (this.hasOwnProperty(property))
+            if (this.hasOwnProperty(property) || this['__proto__'].hasOwnProperty(property))
             {
                 this[property] = value;
                 isSet = true;

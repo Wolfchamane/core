@@ -24,7 +24,8 @@
     },
     "demo"          : {
       "base"        : "demo/",
-      "statics"     : "<%= directories.demo.base %>statics/"
+      "statics"     : "<%= directories.demo.base %>statics/",
+      "app"         : "<%= directories.demo.base %>app/"
     },
     "dest"          : {
       "base"        : "../run/",
