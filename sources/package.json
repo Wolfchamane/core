@@ -4,7 +4,7 @@
   "author"        : "Arturo Martínez",
   "description"   : "Wolfchamane.com Core Library",
   "readme"        : "README.md",
-  "homepage"      : "http://mymovies.wolfchamane.com",
+  "homepage"      : "http://wolfchamane.com",
   "private"       : true,
   "dependencies"  : {
     "grunt"                 : "~0.4.0",
@@ -38,15 +38,7 @@
     }
   },
   "environments"  : {
-    "local": {
-      "protocol": "http",
-      "host": "localhost/background/",
-      "allowedUrl": ".+localhost.+"
-    },
-    "live": {
-      "protocol": "http",
-      "host": "wolfchamane.com/",
-      "allowedUrl": ".+wolfchamane\\.com.+"
-    }
+    "local": "",
+    "live": ""
   }
 }

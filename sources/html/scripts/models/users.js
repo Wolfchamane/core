@@ -22,7 +22,7 @@
              * @property    url
              * @type        {String}
              */
-            url             : '[[HOST]]users.php',
+            url             : '',
             /**
              * Service request params for each REST method
              */

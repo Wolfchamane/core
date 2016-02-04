@@ -39,7 +39,7 @@
             /**
              * @inheritDoc
              */
-            url: '[[HOST]]movies.php',
+            url: '',
             /**
              * Gets the total of movies in DDBB
              * @method getMovies

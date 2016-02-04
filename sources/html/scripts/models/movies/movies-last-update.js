@@ -2,7 +2,7 @@ Core.ModelMoviesLastUpdate = Core.RequestManager.extend(
     {
         lastUpdate: null,
         requestParams: null,
-        url: '[[HOST]]backend/getMoviesLastUpdate.php',
+        url: '',
         method: 'GET',
         getLastUpdate: function()
         {
