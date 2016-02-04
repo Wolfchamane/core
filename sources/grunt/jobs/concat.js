@@ -2,7 +2,7 @@ module.exports = function(grunt){
     grunt.config(
         'concat',
         {
-            html: {
+            js: {
                 src: [
                     '<%= directories.vendors.jquery %>',
                     '<%= directories.bower.page %>',
@@ -12,6 +12,16 @@ module.exports = function(grunt){
                     '<%= directories.html.scripts %>' + 'models/**/*.js'
                 ],
                 dest: '<%= directories.dest.base %>core.js'
+            },
+            css: {
+                src: ['<%= directories.html.styles %>**/*.css'],
+                dest: '<%= directories.dest.base %>core.css'
+            },
+            demo: {
+                src: [
+                    '<%= directories.demo.app %>**/*.js'
+                ],
+                dest: '<%= directories.dest.base %>demo.js'
             }
         }
     );

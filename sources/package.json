@@ -20,7 +20,12 @@
       "base"        : "html/",
       "components"  : "<%= directories.html.base %>/components/",
       "scripts"     : "<%= directories.html.base %>/scripts/",
-      "statics"     : "<%= directories.html.base %>/statics/"
+      "styles"      : "<%= directories.html.base %>/styles/"
+    },
+    "demo"          : {
+      "base"        : "demo/",
+      "statics"     : "<%= directories.demo.base %>statics/",
+      "app"         : "<%= directories.demo.base %>app/"
     },
     "dest"          : {
       "base"        : "../run/",

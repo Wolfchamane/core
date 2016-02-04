@@ -69,7 +69,17 @@
                                 request.then(function(){
                                     if (!isEmpty(model.get('user')))
                                     {
-                                        Core.Router.transitTo('global-position');
+                                        var ref = (typeof App !== 'undefined')
+                                            ? App
+                                            : (typeof Demo !== 'undefined')
+                                                ? Demo
+                                                : Core;
+                                        if (!!ref.Router)
+                                        {
+                                            ref.Router.transitTo('global-position', {
+                                                user: model.get('user').name
+                                            });
+                                        }
                                     }
                                 });
                             }

@@ -13,6 +13,9 @@
     Core.Router = Core.extend
     (
         {
+            _styleOnAnimation: 'animation-on',
+            _styleOffAnimation: 'animation-off',
+            _animationTimeout: 600,
             /**
              * @inheritDoc
              */
@@ -34,16 +37,45 @@
             /**
              * Resolves all paths inscribing into {@_rootNode} the template stored in {@_routes} for the path
              * @param   path {String}
+             * @param   context {Object}
              * @private
              */
-            _resolve    : function(path)
+            _resolve    : function(path, context)
             {
-                if (this._routes.hasOwnProperty(path))
+                var self = this;
+                if (self._routes.hasOwnProperty(path))
                 {
-                    var element = document.getElementById(this._rootNode);
+                    var element = document.getElementById(self._rootNode);
                     if (element)
                     {
-                        element.innerHTML = this._routes[path];
+                        if (element.classList.contains(self.get('_styleOffAnimation')))
+                        {
+                            element.classList.remove(self.get('_styleOffAnimation'));
+                        }
+                        element.classList.add(self.get('_styleOnAnimation'));
+                        setTimeout(
+                            function()
+                            {                                
+                                setTimeout(
+                                    function()
+                                    {
+                                        var params = context
+                                            ? context.state
+                                            : null;
+                                        if (params.path)
+                                        {
+                                            delete params.path;
+                                        }
+                                        element.innerHTML = self._routes[path].apply(self, [params]);
+                                        element.classList.remove(self.get('_styleOnAnimation'));
+                                        element.classList.add(self.get('_styleOffAnimation'));
+
+                                    },
+                                    self.get('_animationTimeout')
+                                );
+                            },
+                            self.get('_animationTimeout')
+                        );
                     }
                 }
             },
@@ -110,7 +142,7 @@
              * Transits to new path, if exists
              * @param path {String}
              */
-            transitTo   : function(path)
+            transitTo   : function(path, options)
             {
                 var fixedPath = path;
                 if (fixedPath.lastIndexOf('-') !== -1)
@@ -121,9 +153,9 @@
                 {
                     fixedPath = '/' + fixedPath;
                 }
-                if (this._routes.hasOwnProperty(fixedPath))
+                if (this._routes && this._routes.hasOwnProperty(fixedPath))
                 {
-                    page(fixedPath);
+                    page(fixedPath, options);
                 }
             },
             /**
