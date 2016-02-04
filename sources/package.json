@@ -3,7 +3,7 @@
   "name"          : "wolfchamane-core",
   "author"        : "Arturo Martínez",
   "description"   : "Wolfchamane.com Core Library",
-  "readme"        : "README.md",
+  "readme"        : "../README.md",
   "homepage"      : "http://wolfchamane.com",
   "private"       : true,
   "dependencies"  : {
